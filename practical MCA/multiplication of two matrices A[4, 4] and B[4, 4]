@@ -1,0 +1,174 @@
+Implement multiplication of two matrices A[4, 4] and B[4, 4] and calculate following: 10
+(i) How many times the innermost and the outermost loop will run?
+(ii) Total number of multiplication and additions in computing the multiplication of given matrices.
+
+
+When writing the solution for matrix multiplication in your practical exam, you'll need to follow a clear and structured approach. Below is an example of how to write your solution step by step in the exam.
+
+### 1. *Problem Statement* (Briefly restate the problem)
+State the matrices and the problem you're solving.
+
+*Example*:
+> *Problem*:  
+We are given two matrices \( A \) and \( B \), both of size \( 4 \times 4 \), and we need to compute their product \( C = A \times B \), where:
+- Matrix \( A \) = 
+  \[
+  \begin{bmatrix}
+  1 & 2 & 3 & 4 \\
+  5 & 6 & 7 & 8 \\
+  9 & 10 & 11 & 12 \\
+  13 & 14 & 15 & 16
+  \end{bmatrix}
+  \]
+- Matrix \( B \) = 
+  \[
+  \begin{bmatrix}
+  1 & 0 & 0 & 0 \\
+  0 & 1 & 0 & 0 \\
+  0 & 0 & 1 & 0 \\
+  0 & 0 & 0 & 1
+  \end{bmatrix}
+  \]
+  
+We are asked to determine:
+1. How many times the innermost and outermost loops will run.
+2. The total number of multiplications and additions required to compute the matrix product.
+
+---
+
+### 2. *Matrix Multiplication Algorithm*
+
+Explain how matrix multiplication works in general and what the loops represent.
+
+*Example*:
+
+The standard matrix multiplication of two matrices \( A \) and \( B \), where the result matrix \( C \) is computed as:
+
+\[
+C[i][j] = \sum_{k=1}^{n} A[i][k] \times B[k][j]
+\]
+
+In this case, both matrices \( A \) and \( B \) are of size \( 4 \times 4 \), so the resulting matrix \( C \) will also be of size \( 4 \times 4 \). Each element \( C[i][j] \) in the resulting matrix is calculated as the sum of products between the elements from the \( i \)-th row of matrix \( A \) and the \( j \)-th column of matrix \( B \).
+
+---
+
+### 3. *Code Implementation* (Provide the pseudocode or actual code)
+
+Provide the actual implementation in the form of pseudocode or code. If writing code is part of the exam, write the code clearly with appropriate variable names and explanations.
+
+*Example*:
+
+python
+def multiply_matrices(A, B):
+    # Initialize the result matrix C with zero values
+    C = [[0 for _ in range(len(B[0]))] for _ in range(len(A))]
+
+    # Perform matrix multiplication
+    for i in range(len(A)):      # Loop through rows of A
+        for j in range(len(B[0])):  # Loop through columns of B
+            for k in range(len(B)):  # Loop through shared dimension
+                C[i][j] += A[i][k] * B[k][j]  # Add the product
+
+    return C
+
+
+---
+
+### 4. *Explanation of the Loops and Their Iterations*
+
+Now, explain how the loops work and how many times each loop will execute.
+
+*Example*:
+
+In this case, we have three loops:
+
+- *Outermost loop*: This loop runs over the rows of matrix \( A \), so it runs 4 times (since \( A \) has 4 rows).
+- *Middle loop*: This loop runs over the columns of matrix \( B \), so it runs 4 times (since \( B \) has 4 columns).
+- *Innermost loop*: This loop runs over the common dimension between \( A \) and \( B \), which is 4 (since both matrices are \( 4 \times 4 \)).
+
+Thus, the total number of iterations for the innermost loop will be:
+\[
+\text{Total iterations} = 4 \times 4 \times 4 = 64
+\]
+Therefore, the innermost loop runs *64 times*.
+
+---
+
+### 5. *Multiplications and Additions*
+
+Now, calculate the number of multiplications and additions.
+
+*Example*:
+
+- For each element \( C[i][j] \) in the result matrix, we perform:
+  - *4 multiplications* (since the innermost loop runs 4 times).
+  - *3 additions* (since we sum 4 products, which requires 3 additions).
+
+Since the result matrix \( C \) is \( 4 \times 4 \), there are 16 elements in the matrix.
+
+- *Multiplications*: There are \( 16 \times 4 = 64 \) multiplications in total.
+- *Additions*: There are \( 16 \times 3 = 48 \) additions in total.
+
+---
+
+### 6. *Final Answer*
+
+Summarize the total number of loop executions and operations.
+
+*Example*:
+
+- The *innermost loop* will run *64 times*.
+- There will be *64 multiplications* and *48 additions* in computing the multiplication of the given matrices.
+
+---
+
+### 7. *Conclusion (Optional)*
+
+If required, you can conclude the solution briefly by mentioning that the algorithm works for any \( 4 \times 4 \) matrices and the total computational cost has been calculated.
+
+---
+
+### Example Answer in Exam:
+
+*Problem*:  
+Given two \( 4 \times 4 \) matrices \( A \) and \( B \), compute their product \( C = A \times B \). The matrices are as follows:
+\[
+A = \begin{bmatrix} 
+1 & 2 & 3 & 4 \\
+5 & 6 & 7 & 8 \\
+9 & 10 & 11 & 12 \\
+13 & 14 & 15 & 16 
+\end{bmatrix}
+\quad
+B = \begin{bmatrix} 
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 
+\end{bmatrix}
+\]
+
+*Solution*:
+
+1. *Matrix Multiplication Algorithm*:
+   The element \( C[i][j] \) is computed as:
+   \[
+   C[i][j] = A[i][1] \times B[1][j] + A[i][2] \times B[2][j] + A[i][3] \times B[3][j] + A[i][4] \times B[4][j]
+   \]
+   The loops iterate over all rows of \( A \) and columns of \( B \) to compute all elements of matrix \( C \).
+
+2. *Number of Loops*:
+   - The *outmost loop* runs 4 times (over rows of \( A \)).
+   - The *middle loop* runs 4 times (over columns of \( B \)).
+   - The *innermost loop* runs 4 times (over the shared dimension).
+
+Thus, the *innermost loop* will run \( 4 \times 4 \times 4 = 64 \) times.
+
+3. *Multiplications and Additions*:
+   - Each element in matrix \( C \) requires *4 multiplications* and *3 additions*.
+   - Total *multiplications*: \( 16 \times 4 = 64 \)
+   - Total *additions*: \( 16 \times 3 = 48 \)
+
+---
+
+By following this approach, you will be able to clearly present the steps, code, and calculations for matrix multiplication during your practical exam.
