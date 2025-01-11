@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Bus Seat Reservation</title>
+    <script type="text/javascript">
+        // JavaScript function for form validation
+        function validateForm() {
+            // Get form values
+            var fullName = document.getElementById("fullName").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var journeyDate = document.getElementById("journeyDate").value;
+            var numSeats = document.getElementById("numSeats").value;
+            var busType = document.getElementById("busType").value;
+
+            // Check if any required field is empty
+            if (fullName === "") {
+                alert("Please enter your full name.");
+                return false;
+            }
+            if (email === "") {
+                alert("Please enter your email address.");
+                return false;
+            }
+            if (phone === "") {
+                alert("Please enter your phone number.");
+                return false;
+            }
+            if (journeyDate === "") {
+                alert("Please select your date of journey.");
+                return false;
+            }
+            if (numSeats === "" || numSeats <= 0) {
+                alert("Please enter a valid number of seats.");
+                return false;
+            }
+            if (busType === "") {
+                alert("Please select the type of bus.");
+                return false;
+            }
+
+            // Simulate form submission to the database
+            alert("Reservation successful! Your data has been submitted.");
+            // In a real-world scenario, here you'd use a backend language to insert the data into a database.
+            return true;  // Allow form submission
+        }
+
+        // Reset the form fields
+        function resetForm() {
+            document.getElementById("reservationForm").reset();
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Tourist Bus Seat Reservation</h2>
+    <form id="reservationForm" onsubmit="return validateForm()" method="POST">
+        <!-- Full Name -->
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required><br><br>
+
+        <!-- Email Address -->
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <!-- Phone Number -->
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <!-- Date of Journey -->
+        <label for="journeyDate">Date of Journey:</label>
+        <input type="date" id="journeyDate" name="journeyDate" required><br><br>
+
+        <!-- Number of Seats -->
+        <label for="numSeats">Number of Seats:</label>
+        <input type="number" id="numSeats" name="numSeats" min="1" required><br><br>
+
+        <!-- Bus Type -->
+        <label for="busType">Bus Type:</label>
+        <select id="busType" name="busType" required>
+            <option value="">Select Bus Type</option>
+            <option value="standard">Standard</option>
+            <option value="deluxe">Deluxe</option>
+            <option value="vip">VIP</option>
+        </select><br><br>
+
+        <!-- Special Requests (Optional) -->
+        <label for="specialRequests">Special Requests (Optional):</label><br>
+        <textarea id="specialRequests" name="specialRequests" rows="4" cols="50"></textarea><br><br>
+
+        <!-- Submit and Reset buttons -->
+        <input type="submit" value="Submit">
+        <input type="button" value="Reset" onclick="resetForm()">
+    </form>
+
+</body>
+</html>
