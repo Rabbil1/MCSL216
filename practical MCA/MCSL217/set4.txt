@@ -1,0 +1,166 @@
+### 1. **C Program to Compute the Factorial of an Input Integer Less Than 10**
+
+To compute the factorial of an integer, we can use a simple `for` loop or recursion. Since the problem specifies that the input integer should be less than 10, we will validate that and compute the factorial accordingly.
+
+Here’s the C program to compute the factorial of an input integer less than 10:
+
+#### C Program:
+
+```c
+#include <stdio.h>
+
+// Function to calculate factorial
+int factorial(int n) {
+    int result = 1;
+    
+    // Factorial of negative numbers is not defined
+    if (n < 0) {
+        return -1; // Error code for invalid input
+    }
+
+    // Factorial calculation (n! = n * (n-1) * ... * 1)
+    for (int i = 1; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    int num;
+
+    // Taking input from the user
+    printf("Enter an integer (less than 10): ");
+    scanf("%d", &num);
+
+    // Input validation to check if the number is less than 10
+    if (num < 0 || num >= 10) {
+        printf("Please enter a number less than 10.\n");
+        return 1;
+    }
+
+    // Compute and display the factorial
+    int result = factorial(num);
+    
+    if (result == -1) {
+        printf("Error: Factorial is not defined for negative numbers.\n");
+    } else {
+        printf("The factorial of %d is: %d\n", num, result);
+    }
+
+    return 0;
+}
+```
+
+#### Explanation:
+
+1. **Factorial Function**:
+   - The `factorial(int n)` function calculates the factorial of the number `n` using an iterative approach.
+   - The loop runs from `1` to `n`, multiplying each number to get the product (factorial).
+   - If the number is negative, the function returns `-1` as an error code (since factorial is undefined for negative numbers).
+
+2. **Input Validation**:
+   - In the `main()` function, we take the input from the user and check whether it is less than `10` and non-negative.
+   - If the input does not meet this condition, an error message is printed.
+
+3. **Displaying Result**:
+   - If the number is valid (less than 10), the factorial is calculated and displayed.
+   - If the input is invalid, the program terminates after printing an error message.
+
+#### Sample Output:
+
+```
+Enter an integer (less than 10): 5
+The factorial of 5 is: 120
+```
+
+```
+Enter an integer (less than 10): 10
+Please enter a number less than 10.
+```
+
+---
+
+### 2. **Set of Test Cases for the Factorial Program**
+
+To ensure the correctness of the factorial program, we need to test it against various cases. Here’s a set of test cases that will test different input scenarios for the given program:
+
+#### Test Case 1: Valid Input (Edge Case)
+
+- **Input**: `0`
+- **Expected Output**: 
+  ```
+  The factorial of 0 is: 1
+  ```
+  - Factorial of 0 is `1` by definition.
+
+#### Test Case 2: Valid Input
+
+- **Input**: `5`
+- **Expected Output**:
+  ```
+  The factorial of 5 is: 120
+  ```
+  - Factorial of 5 is `5! = 5 * 4 * 3 * 2 * 1 = 120`.
+
+#### Test Case 3: Another Valid Input
+
+- **Input**: `3`
+- **Expected Output**:
+  ```
+  The factorial of 3 is: 6
+  ```
+  - Factorial of 3 is `3! = 3 * 2 * 1 = 6`.
+
+#### Test Case 4: Invalid Input (Greater Than or Equal to 10)
+
+- **Input**: `10`
+- **Expected Output**:
+  ```
+  Please enter a number less than 10.
+  ```
+  - The input `10` is invalid because the program requires the number to be less than 10.
+
+#### Test Case 5: Invalid Input (Negative Number)
+
+- **Input**: `-3`
+- **Expected Output**:
+  ```
+  Error: Factorial is not defined for negative numbers.
+  ```
+  - Factorial is not defined for negative integers, so the program should output an error message.
+
+#### Test Case 6: Another Valid Input
+
+- **Input**: `7`
+- **Expected Output**:
+  ```
+  The factorial of 7 is: 5040
+  ```
+  - Factorial of 7 is `7! = 7 * 6 * 5 * 4 * 3 * 2 * 1 = 5040`.
+
+#### Test Case 7: Boundary Test (Maximum Input Less Than 10)
+
+- **Input**: `9`
+- **Expected Output**:
+  ```
+  The factorial of 9 is: 362880
+  ```
+  - Factorial of 9 is `9! = 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1 = 362880`.
+
+#### Test Case 8: Invalid Input (Non-Numeric Input)
+
+- **Input**: `abc` (non-numeric string input)
+- **Expected Output**:
+  ```
+  Please enter a number less than 10.
+  ```
+  - If the user inputs a non-numeric string (such as `abc`), the program should prompt the user to enter a valid number.
+
+---
+
+### Conclusion:
+
+1. **C Program**: The program computes the factorial of an integer less than 10 and performs input validation.
+2. **Test Cases**: A set of test cases covers different input scenarios, including edge cases, invalid inputs, and typical inputs.
+
+By running these test cases, you ensure that the program behaves as expected under various conditions, and handles edge cases and invalid inputs correctly.
