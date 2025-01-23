@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int num, factorial = 1;
+
+    // Input from user
+    printf("Enter an integer (less than 10): ");
+    scanf("%d", &num);
+
+    // Check if the input is valid
+    if (num < 0 || num >= 10) {
+        printf("Error: Input must be a non-negative integer less than 10.\n");
+        return 1;
+    }
+
+    // Calculate factorial
+    for (int i = 1; i <= num; i++) {
+        factorial *= i;
+    }
+
+    // Output the result
+    printf("Factorial of %d is %d\n", num, factorial);
+
+    return 0;
+}
